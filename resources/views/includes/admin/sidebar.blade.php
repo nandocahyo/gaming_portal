@@ -6,6 +6,35 @@
             <span>Dashboard</span>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Team</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-gamepad"></i>
+            <span>Player</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-cubes"></i>
+            <span>Tanding</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-user-circle"></i>
+            <span>User</span>
+          </a>
+        </li>
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>

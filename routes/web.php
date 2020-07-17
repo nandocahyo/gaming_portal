@@ -17,7 +17,12 @@ Route::get('/', function () {
 
 Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])
 ->group(function() {
-    Route::get('/','DashboardController@index')->name('dashboard');
+    Route::get('/dashboard','DashboardController@index')->name('dashboard');
+    Route::resource('player', 'PlayerController');
+    Route::resource('tanding', 'TandingController');
+    Route::resource('team', 'TeamController');
+    Route::resource('tournament', 'TournamentController');
+
 });
 
 Auth::routes();
