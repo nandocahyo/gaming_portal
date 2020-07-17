@@ -11,18 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.dashboard');
-});
 
 Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])
 ->group(function() {
-    Route::get('/dashboard','DashboardController@index')->name('dashboard');
+    Route::get('/','DashboardController@index')->name('dashboard');
     Route::resource('player', 'PlayerController');
     Route::resource('tanding', 'TandingController');
     Route::resource('team', 'TeamController');
     Route::resource('tournament', 'TournamentController');
-
+    Route::resource('tournament-category', 'TournamentCategoryController');
 });
 
 Auth::routes();
