@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Redirect,Response;
-use App\TournamentCategory;
 
-class TournamentCategoryController extends Controller
+class InfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class TournamentCategoryController extends Controller
      */
     public function index()
     {
-        $data['items'] = TournamentCategory::all();
-        return view('pages.tournament-category',$data);
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class TournamentCategoryController extends Controller
      */
     public function create()
     {
-        return view('pages.tournament-category-create');
+        //
     }
 
     /**
@@ -38,10 +35,7 @@ class TournamentCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
-        TournamentCategory::create($data);
-        return redirect()->route('tournament-category.index');
+        //
     }
 
     /**
@@ -63,11 +57,7 @@ class TournamentCategoryController extends Controller
      */
     public function edit($id)
     {
-        $item = TournamentCategory::findOrFail($id);
-        //var_dump($item);
-        return view('pages.tournament-category-edit',[
-            'item' => $item
-        ]);
+        //
     }
 
     /**
@@ -79,11 +69,7 @@ class TournamentCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $item = TournamentCategory::findOrFail($id);
-        $item->update($data);
-        
-        return redirect()->route('tournament-category.index');
+        //
     }
 
     /**
@@ -94,9 +80,6 @@ class TournamentCategoryController extends Controller
      */
     public function destroy($id)
     {
-        $item = TournamentCategory::findOrFail($id);
-        $item->delete();
-
-        return redirect()->route('tournament-category.index');
+        //
     }
 }

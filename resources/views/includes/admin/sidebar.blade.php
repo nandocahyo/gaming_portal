@@ -43,6 +43,13 @@
         </li>
 
         <li class="nav-item">
+          <a class="nav-link" href="{{ route('info.index') }}">
+            <i class="fas fa-fw fa-info"></i>
+            <span>Info</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="fas fa-fw fa-user-circle"></i>
             <span>User</span>

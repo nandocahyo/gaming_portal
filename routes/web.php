@@ -20,6 +20,7 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])
     Route::resource('team', 'TeamController');
     Route::resource('tournament', 'TournamentController');
     Route::resource('tournament-category', 'TournamentCategoryController');
+    Route::resource('info', 'InfoController');
 });
 
 Auth::routes();

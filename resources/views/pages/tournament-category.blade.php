@@ -3,21 +3,13 @@
 @section('content')
 <div class="container-fluid">
 
-          <!-- Breadcrumbs-->
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
-            </li>
-            <li class="breadcrumb-item active">Tournament Category</li>
-          </ol>
-
           <!-- DataTables Example -->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
               Data Tournament Category</div>
             <div class="card-body">
-                <a href="javascript:void(0)" class="btn btn-primary mb-2" id="create-new-post">Tambah Tournament Category</a> 
+                <a href="{{route('tournament-category.create')}}" class="btn btn-primary mb-2" id="create-new-post">Tambah Tournament Category</a> 
             <br><br>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"><span id="laravel_crud"></span>
@@ -30,13 +22,21 @@
                   </thead>
                   
                   <tbody id="posts-crud">
-                    @foreach($posts as $post)
-                    <tr id="post_id_{{ $post->id }}">
-                      <td>{{ $post->id }}</td>
-                      <td>{{ $post->nama }}</td>
+                    @foreach($items as $item)
+                    <tr>
+                      <td>{{ $item->id }}</td>
+                      <td>{{ $item->nama }}</td>
                       <td>
-                            <a href="javascript:void(0)" id="edit-post" data-id="{{ $post->id }}" class="btn btn-info mr-2">Edit</a>
-                            <a href="javascript:void(0)" id="delete-post" data-id="{{ $post->id }}" class="btn btn-danger delete-user">Delete</a>
+                            <a href="{{ route('tournament-category.edit', $item->id) }}" class="btn btn-info">
+                                <i class="fa fa-pencil-alt"></i>
+                            </a>
+                            <form action="{{ route('tournament-category.destroy', $item->id) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
                       </td>
                     </tr>
                     @endforeach
