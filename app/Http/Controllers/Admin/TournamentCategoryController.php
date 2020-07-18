@@ -9,34 +9,80 @@ use App\TournamentCategory;
 
 class TournamentCategoryController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $data['posts'] = TournamentCategory::all();
         return view('pages.tournament-category',$data);
     }
 
-    public function store(Request $request)
-    {  
-        $postID = $request->post_id;
-        $post   =   TournamentCategory::updateOrCreate(['id' => $postID],
-                    ['nama' => $request->nama]);
-    
-        return Response::json($post);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
-        //
-        $where = array('id' => $id);
-        $post  = TournamentCategory::where($where)->first();
- 
-        return Response::json($post);
+        
     }
 
-    public function destroy($id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
         //
-        $post = TournamentCategory::where('id',$id)->delete();
-        return Response::json($post);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        
     }
 }
