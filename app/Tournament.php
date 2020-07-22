@@ -19,4 +19,9 @@ class Tournament extends Model
     {
         return $this->belongsTo(TournamentCategory::class, 'id_category');
     }
+
+    public function infos()
+    {
+        return $this->hasMany(Info::class);
+    }
 }
