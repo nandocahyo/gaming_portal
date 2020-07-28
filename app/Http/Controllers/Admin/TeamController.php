@@ -22,7 +22,7 @@ class TeamController extends Controller
 
     public function store(Request $request)
     {
-        Team::create([
+        $team= Team::create([
             'nama'      => $request->nama,
             'email'     => $request->email,
             'discord'   => $request->discord,
@@ -30,7 +30,7 @@ class TeamController extends Controller
         ]);
 
         Player::create([
-            
+            'id_team'   => $team->id,
             'player1'   => $request->player1,
             'level1'    => $request->level1,
             'player2'   => $request->player2,
