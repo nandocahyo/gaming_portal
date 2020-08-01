@@ -10,6 +10,7 @@
               Data Tanding</div>
             <div class="card-body">
                 <a href="{{ route('history') }}" class="btn btn-primary mb-2" id="create-new-post">Riwayat Pertandingan</a> 
+                <a href="{{ route('bracket') }}" class="btn btn-warning mb-2" id="create-new-post">Bracket Pertandingan</a> 
             <br><br>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"><span id="laravel_crud"></span>
@@ -33,7 +34,11 @@
                       <td>{{ $item->team->nama }}</td>
                       <td>{{ $item->tournament->nama }}</td>
                       <td>{{ $item->tournament->tanggal }}</td>
-                      <td>{{ $item->status }}</td>
+                      @if($item->status =='RUNNING') 
+                        <td><span class="badge badge-pill badge-warning">{{ $item->status }}</span></td>
+                      @elseif($item->status =='FINISH') 
+                        <td><span class="badge badge-pill badge-success">{{ $item->status }}</span></td>
+                      @endif  
                       <td>
                             <a href="{{ route('ronde1') }}" class="btn btn-info">
                                 <i class="fa fa-eye"></i>

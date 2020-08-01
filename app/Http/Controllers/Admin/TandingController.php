@@ -59,6 +59,12 @@ class TandingController extends Controller
         ]);
     }
 
+    public function bracket()
+    {
+        $data['items'] = Tanding::with(['team', 'tournament'])->where('status','RUNNING')->get();
+        return view('pages.tanding-bracket', $data);
+    }
+
     public function score1(Request $request, $id)
     {
         $item = Tanding::findOrFail($id);

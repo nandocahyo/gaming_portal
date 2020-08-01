@@ -37,7 +37,11 @@
                       <td>{{ $item->tournament->nama }}</td>
                       <td>{{ $item->tournament->tanggal }}</td>
                       <td>{{ $item->score }}</td>
-                      <td>{{ $item->status }}</td>
+                      @if($item->status =='RUNNING') 
+                        <td><span class="badge badge-pill badge-warning">{{ $item->status }}</span></td>
+                      @elseif($item->status =='FINISH') 
+                        <td><span class="badge badge-pill badge-success">{{ $item->status }}</span></td>
+                      @endif  
                     </tr>
                     @endforeach
                   </tbody>

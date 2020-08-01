@@ -27,6 +27,7 @@ Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])
     Route::get('/ronde2','TandingController@ronde2')->name('ronde2');
     Route::get('/ronde3','TandingController@ronde3')->name('ronde3');
     Route::get('/final','TandingController@final')->name('final');
+    Route::get('/bracket','TandingController@bracket')->name('bracket');
     Route::get('/history','TandingController@history')->name('history');
     Route::put('/score1/{id}','TandingController@score1')->name('score1');
     Route::put('/score2/{id}','TandingController@score2')->name('score2');

@@ -10,3 +10,7 @@
 <!-- Custom styles for this template-->
 <link href="{{url('backend/css/sb-admin.css')}}" rel="stylesheet">
 
+<!-- bracket css -->
+<link href="{{url('backend/css/bracket.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
