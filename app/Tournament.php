@@ -24,4 +24,9 @@ class Tournament extends Model
     {
         return $this->hasMany(Info::class);
     }
+
+    public function tanding()
+    {
+        return $this->hasMany(Tanding::class);
+    }
 }

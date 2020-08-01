@@ -18,4 +18,9 @@ class Team extends Model
     {
         return $this->hasMany(Player::class, 'id_team');
     }
+
+    public function tanding()
+    {
+        return $this->hasMany(Tanding::class);
+    }
 }

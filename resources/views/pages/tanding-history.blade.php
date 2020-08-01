@@ -7,10 +7,8 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Data Tanding</div>
-            <div class="card-body">
-                <a href="{{ route('history') }}" class="btn btn-primary mb-2" id="create-new-post">Riwayat Pertandingan</a> 
-            <br><br>
+              Data Riwayat Pertandingan</div>
+            <div class="card-body"> 
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"><span id="laravel_crud"></span>
                   <thead>
@@ -21,7 +19,6 @@
                       <th>Nama Tournament</th>
                       <th>Tanggal</th>
                       <th>Status</th>
-                      <th>Aksi</th>
                     </tr>
                   </thead>
                   
@@ -34,18 +31,6 @@
                       <td>{{ $item->tournament->nama }}</td>
                       <td>{{ $item->tournament->tanggal }}</td>
                       <td>{{ $item->status }}</td>
-                      <td>
-                            <a href="{{ route('ronde1') }}" class="btn btn-info">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <form action="{{ route('tanding.update', $item->id) }}" method="post" class="d-inline">
-                                @csrf
-                                @method('PUT')
-                                <button class="btn btn-warning">
-                                    <i class="fa fa-th"></i>
-                                </button>
-                            </form>
-                      </td>
                     </tr>
                     @endforeach
                   </tbody>
