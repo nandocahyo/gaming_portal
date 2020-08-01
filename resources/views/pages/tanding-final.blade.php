@@ -12,7 +12,7 @@
                 <a href="{{ route('ronde1')}}" class="btn btn-primary mb-2" id="create-new-post">Ronde 1</a> 
                 <a href="{{ route('ronde2')}}" class="btn btn-primary mb-2" id="create-new-post">Ronde 2</a> 
                 <a href="{{ route('ronde3')}}" class="btn btn-primary mb-2" id="create-new-post">Ronde 3</a> 
-                <a href="{{ route('final')}}" class="btn btn-primary mb-2" id="create-new-post">Final</a> 
+                <a href="{{ route('final')}}" class="btn btn-primary mb-2 {{ Request::path() === 'admin/final' ? 'btn-warning' : ''}}" id="create-new-post">Final</a> 
             <br><br>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"><span id="laravel_crud"></span>

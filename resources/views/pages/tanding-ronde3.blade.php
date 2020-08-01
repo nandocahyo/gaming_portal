@@ -11,7 +11,7 @@
             <div class="card-body">
                 <a href="{{ route('ronde1')}}" class="btn btn-primary mb-2" id="create-new-post">Ronde 1</a> 
                 <a href="{{ route('ronde2')}}" class="btn btn-primary mb-2" id="create-new-post">Ronde 2</a> 
-                <a href="{{ route('ronde3')}}" class="btn btn-primary mb-2" id="create-new-post">Ronde 3</a> 
+                <a href="{{ route('ronde3')}}" class="btn btn-primary mb-2 {{ Request::path() === 'admin/ronde3' ? 'btn-warning' : ''}}" id="create-new-post">Ronde 3</a> 
                 <a href="{{ route('final')}}" class="btn btn-primary mb-2" id="create-new-post">Final</a> 
             <br><br>
               <div class="table-responsive">
