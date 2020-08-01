@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tanding extends Model
 {
     protected $fillable = [
-        'score','status'
+        'id_tournament','id_team','score','status'
     ];
 
     protected $hidden = [

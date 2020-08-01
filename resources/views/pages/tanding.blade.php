@@ -9,6 +9,7 @@
               <i class="fas fa-table"></i>
               Data Tanding</div>
             <div class="card-body">
+                <a href="{{ route('tanding.create') }}" class="btn btn-info mb-2" id="create-new-post">Tambah Pertandingan</a> 
                 <a href="{{ route('history') }}" class="btn btn-primary mb-2" id="create-new-post">Riwayat Pertandingan</a> 
                 <a href="{{ route('bracket') }}" class="btn btn-warning mb-2" id="create-new-post">Bracket Pertandingan</a> 
             <br><br>
@@ -41,15 +42,14 @@
                       @endif  
                       <td>
                             <a href="{{ route('ronde1') }}" class="btn btn-info">
-                                <i class="fa fa-eye"></i>
+                                <i class="fa fa-pencil-alt"></i>
                             </a>
-                            <form action="{{ route('tanding.update', $item->id) }}" method="post" class="d-inline">
+                      
+                            <form action="{{ route('tanding.update', $item->id) }}" method="post" class="d-inline" id="delete-pack">
                                 @csrf
                                 @method('PUT')
-                                <button class="btn btn-warning">
-                                    <i class="fa fa-th"></i>
-                                </button>
-                            </form>
+                                <button class="btn btn-danger" onclick="confirmDelete(this)" type="button"><i class="fa fa-th"></i></button>
+                            </form>  
                       </td>
                     </tr>
                     @endforeach

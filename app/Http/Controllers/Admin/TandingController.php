@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Tanding;
+use App\Team;
+use App\Tournament;
 
 class TandingController extends Controller
 {
@@ -20,6 +22,29 @@ class TandingController extends Controller
         //return view('pages.tanding');
         $data['items'] = Tanding::with(['team', 'tournament'])->get();
         return view('pages.tanding-history',$data);
+    }
+
+    public function create(Request $request)
+    {
+        $tournament = Tournament::all();
+        $team = Team::all();
+
+        return view('pages.tanding-create',[
+            'tournament' => $tournament,
+            'team'      => $team
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        Tanding::create([
+            'id_tournament'   => $request->id_tournament,
+            'id_team'         => $request->id_team,
+            'score'           => 0,
+            'status'          => 'RUNNING'
+        ]);
+
+        return redirect()->route('tanding.index');
     }
 
 
