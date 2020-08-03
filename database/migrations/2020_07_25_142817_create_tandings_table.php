@@ -20,6 +20,7 @@ class CreateTandingsTable extends Migration
             $table->unsignedBigInteger('id_tournament');
             $table->foreign('id_tournament')->references('id')->on('tournaments')->onDelete('cascade');
             $table->integer('score');
+            $table->string('status');
             $table->timestamps();
         });
     }

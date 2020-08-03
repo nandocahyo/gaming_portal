@@ -36,8 +36,8 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="games.html" class="nav-link">Games</a></li>
+	          <li class="nav-item {{ Request::path() === '/' ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
+	          <li class="nav-item {{ Request::path() === '/match' ? 'active' : ''}}"><a href="{{ route('match') }}" class="nav-link">Games</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item cta"><a href="#" class="nav-link">Join Battle</a></li>
 
@@ -120,20 +120,42 @@
 	            <h2 class="mb-4">Great Victory of Warrior</h2>
 	          </div>
 	          <div class="scoreboard mb-5 mb-lg-0">
-	          	<div class="divider text-center"><span>Tue. Feb 21, 2019; FIFA Champions League</span></div>
-	          	<div class="d-sm-flex mb-4">
+			  @if($tanding->score == '0') 
+	          	<div class="divider text-center"><span>{{ \Carbon\Carbon::parse($tanding->updated_at)->format('d M Y')}}</span></div>
+				  @else
+				  <div class="divider text-center"><span>{{ \Carbon\Carbon::parse($semifinal->updated_at)->format('d M Y')}}</span></div>
+				  @endif
+				  <div class="d-sm-flex mb-4">
 		          	<div class="sport-team d-flex align-items-center">
 	          			<div class="img logo" style="background-image: url(frontend/images/team-3.jpg);"></div>
 									<div class="text-center px-1 px-md-3 desc">
-										<h3 class="score win"><span>3</span></h3>
-										<h4 class="team-name">Knight Warrior</h4>
+									@if($tanding->score == '0')
+										<h4 class="score lost"><span>LOSE</span></h4>
+									@elseif($semifinal->score =='2') 
+										<h4 class="score lost"><span>LOSE</span></h4>
+									@endif
+
+									@if($tanding->score == '0')
+										<h4 class="team-name">Bang Loser</h4>
+									@else
+										<h4 class="team-name">{{$semifinal->team->nama}}</h4>
+									@endif
 									</div>
 		          	</div>
 		          	<div class="sport-team d-flex align-items-center">
 	          			<div class="img logo order-sm-last" style="background-image: url(frontend/images/team-2.jpg);"></div>
 									<div class="text-center px-1 px-md-3 desc">
-										<h3 class="score lost"><span>1</span></h3>
-										<h4 class="team-name">Mighty Falcons</h4>
+									@if($tanding->score == '0')
+										<h3 class="score win"><span>WIN</span></h3>
+									@elseif($final->score =='3') 
+										<h3 class="score win"><span>WIN</span></h3>
+									@endif
+
+									@if($tanding->score == '0')
+										<h4 class="team-name">Bang Jago</h4>
+									@else
+										<h4 class="team-name">{{$final->team->nama}}</h4>
+									@endif
 									</div>
 		          	</div>
 	          	</div>
@@ -165,78 +187,22 @@
 				</div>
 				<div class="row ftco-animate">
 					<div class="col-md-12 carousel-game-schedule owl-carousel">
-						<div class="item">
+				
+				@foreach($tournament as $tour)
+				<div class="item">
 							<div class="game-schedule">
 		          	<div class="sport-team d-flex align-items-center">
-	          			<div class="img logo" style="background-image: url(frontend/images/team-3.jpg);"></div>
+	          			<div class="img logo" style="background-image: url({{ URL::to('/') }}/gambar-logo/{{ $tour->logo }});"></div>
 									<div class="pl-4 desc">
-										<span class="venue">Home @ Arena</span>
-										<h4 class="team-name">Knight Warrior</h4>
-										<span class="date">April 17, 2018</span>
+										<span class="venue">{{$tour->tournament_category->nama}}</span>
+										<h4 class="team-name">{{$tour->nama}}</h4>
+										<span class="date">{{ \Carbon\Carbon::parse($tour->tanggal)->format('d M Y')}}</span>
 									</div>
 		          	</div>
 		          </div>
 	          </div>
-	          <div class="item">
-							<div class="game-schedule">
-		          	<div class="sport-team d-flex align-items-center">
-	          			<div class="img logo" style="background-image: url(frontend/images/team-2.jpg);"></div>
-									<div class="pl-4 desc">
-										<span class="venue">Home @ Arena</span>
-										<h4 class="team-name">Knight Warrior</h4>
-										<span class="date">April 17, 2018</span>
-									</div>
-		          	</div>
-		          </div>
-	          </div>
-	          <div class="item">
-							<div class="game-schedule">
-		          	<div class="sport-team d-flex align-items-center">
-	          			<div class="img logo" style="background-image: url(frontend/images/team-3.jpg);"></div>
-									<div class="pl-4 desc">
-										<span class="venue">Home @ Arena</span>
-										<h4 class="team-name">Knight Warrior</h4>
-										<span class="date">April 17, 2018</span>
-									</div>
-		          	</div>
-		          </div>
-	          </div>
-	          <div class="item">
-							<div class="game-schedule">
-		          	<div class="sport-team d-flex align-items-center">
-	          			<div class="img logo" style="background-image: url(frontend/images/team-4.jpg);"></div>
-									<div class="pl-4 desc">
-										<span class="venue">Home @ Arena</span>
-										<h4 class="team-name">Knight Warrior</h4>
-										<span class="date">April 17, 2018</span>
-									</div>
-		          	</div>
-		          </div>
-	          </div>
-	          <div class="item">
-							<div class="game-schedule">
-		          	<div class="sport-team d-flex align-items-center">
-	          			<div class="img logo" style="background-image: url(frontend/images/team-5.jpg);"></div>
-									<div class="pl-4 desc">
-										<span class="venue">Home @ Arena</span>
-										<h4 class="team-name">Knight Warrior</h4>
-										<span class="date">April 17, 2018</span>
-									</div>
-		          	</div>
-		          </div>
-	          </div>
-	          <div class="item">
-							<div class="game-schedule">
-		          	<div class="sport-team d-flex align-items-center">
-	          			<div class="img logo" style="background-image: url(frontend/images/team-6.jpg);"></div>
-									<div class="pl-4 desc">
-										<span class="venue">Home @ Arena</span>
-										<h4 class="team-name">Knight Warrior</h4>
-										<span class="date">April 17, 2018</span>
-									</div>
-		          	</div>
-		          </div>
-	          </div>
+			  @endforeach
+	         
 					</div>
 				</div>
 			</div>
@@ -298,33 +264,19 @@
     		<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="carousel-team owl-carousel">
+					@foreach($team as $teams)
     				<div class="item">
     					<div class="team-wrap text-center">
-		    				<div class="img" style="background-image: url(frontend/images/staff-1.jpg);"></div>
+		    				<div class="img" style="background-image: url({{ URL::to('/') }}/gambar-team/{{ $teams->logo }});"></div>
 		    				<div class="text">
-		    					<h3 class="mb-0">David Scott</h3>
-		    					<span class="position">Wide Receiver</span>
+		    					<h3 class="mb-0">{{$teams->nama}}</h3>
+		    					<span class="position">{{$teams->discord}}</span>
 		    				</div>
 	    				</div>
     				</div>
-    				<div class="item">
-    					<div class="team-wrap text-center">
-		    				<div class="img" style="background-image: url(frontend/images/staff-2.jpg);"></div>
-		    				<div class="text">
-		    					<h3 class="mb-0">David Scott</h3>
-		    					<span class="position">Tight End</span>
-		    				</div>
-	    				</div>
-    				</div>
-    				<div class="item">
-    					<div class="team-wrap text-center">
-		    				<div class="img" style="background-image: url(frontend/images/staff-3.jpg);"></div>
-		    				<div class="text">
-		    					<h3 class="mb-0">David Scott</h3>
-		    					<span class="position">Defensive</span>
-		    				</div>
-	    				</div>
-    				</div>
+					@endforeach
+    				
+    				
     				
     			</div>
     		</div>
@@ -341,24 +293,29 @@
           </div>
         </div>
         <div class="row d-flex">
+
+		@foreach($info->slice(0, 4) as $infos)
           <div class="col-md-6 col-lg-3 ftco-animate">
           	<div class="blog-entry justify-content-end">
-              <a href="blog-single.html" class="block-20" style="background-image: url('frontend/images/image_1.jpg');">
+              <a href="blog-single.html" class="block-20" style="background-image: url({{ URL::to('/') }}/gambar-banner/{{ $infos->banner }});">
               </a>
               <div class="text mt-3 float-right d-block">
               	<div class="d-flex align-items-center p-2 pr-3 mb-4 topp">
               		<div class="one">
-              			<span class="day mr-1">08</span>
+              			<span class="day mr-1">{{ \Carbon\Carbon::parse($infos->created_at)->format('d')}}</span>
               		</div>
               		<div class="two">
-              			<span class="yr">2019</span>
-              			<span class="mos">March</span>
+              			<span class="yr">{{ \Carbon\Carbon::parse($infos->created_at)->format('Y')}}</span>
+              			<span class="mos">{{ \Carbon\Carbon::parse($infos->created_at)->format('M')}}</span>
               		</div>
               	</div>
-                <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+                <h3 class="heading"><a href="#">{{ $infos->rules }}</a></h3>
               </div>
             </div>
           </div>
+		  @endforeach
+
+		  
          
         </div>
       </div>

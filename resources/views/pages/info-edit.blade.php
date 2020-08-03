@@ -39,6 +39,14 @@
                         <input type="text" class="form-control" name="rules" placeholder="Rules" value="{{ $item->rules }}">
                     </div>
 
+                    <div class="form-group">
+                        <label for="title">Banner</label>
+                        <br>
+                        <input type="file" name="banner"><br><br>
+                        <img src="{{ URL::to('/') }}/gambar-banner/{{ $item->banner }}" class="img-thumbnail" width="200">
+                        <input type="hidden" name="hidden_image" value="{{ $item->banner }}">
+                    </div>
+
                     <button type="submit" class="btn btn-primary btn-block">
                         Ubah
                     </button>

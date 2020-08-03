@@ -22,11 +22,17 @@ class TeamController extends Controller
 
     public function store(Request $request)
     {
+        //icon upload
+        $image = $request->file('logo');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('gambar-team'), $new_name);
+
         $team= Team::create([
             'nama'      => $request->nama,
             'email'     => $request->email,
             'discord'   => $request->discord,
-            'no_hp'     => $request->no_hp
+            'no_hp'     => $request->no_hp,
+            'logo'      => $new_name
         ]);
 
         Player::create([

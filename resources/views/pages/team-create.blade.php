@@ -8,7 +8,7 @@
               <i class="fas fa-table"></i>
               Tambah Team</div>
             <div class="card-body">
-                <form action="{{ route('team.store') }}" method="post">
+                <form action="{{ route('team.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group col-6 float-left">
                         <label for="title">Nama Team</label>
@@ -28,6 +28,12 @@
                     <div class="form-group col-6 float-left">
                         <label for="title">No HP</label>
                         <input type="text" class="form-control" name="no_hp" placeholder="No HP" value="{{ old('no_hp') }}">
+                    </div>
+
+                    <div class="form-group col-12 float-left">
+                        <label for="title">Logo</label>
+                        <br>
+                        <input type="file" name="logo" placeholder="Logo" value="{{ old('logo') }}">
                     </div>
 
                     <div class="form-group col-6 float-left">

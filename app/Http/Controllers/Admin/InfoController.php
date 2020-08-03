@@ -42,12 +42,18 @@ class InfoController extends Controller
      */
     public function store(Request $request)
     {
+
+        //icon upload
+        $image = $request->file('banner');
+        $new_name = rand() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('gambar-banner'), $new_name);
        
         $form_data = array(
             'id_tournament' => $request->id_tournament,
             'discord'       => $request->discord,
             'price'         => $request->price,
-            'rules'         => $request->rules
+            'rules'         => $request->rules,
+            'banner'          => $new_name
         );
 
         Info::create($form_data);
@@ -91,15 +97,26 @@ class InfoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $form_data = array(
-            'id_tournament'  => $request->id_tournament,
-            'discord'       => $request->discord,
-            'price'         => $request->price,
-            'rules'         => $request->rules,
-            );
+        $image_name = $request->hidden_image;
+        $image = $request->file('banner');
 
-        Info::whereId($id)->update($form_data);
-      
+        if($image != '')
+        {
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('gambar-banner'), $image_name);
+        }
+        else
+        {
+            $form_data = array(
+            'id_tournament' => $request->id_tournament,
+            'discord' => $request->discord,
+            'price' => $request->price,
+            'rules' => $request->rules,
+            'banner' => $image_name
+            );
+            Info::whereId($id)->update($form_data);
+        }
+       
         return redirect()->route('info.index');
     }
 

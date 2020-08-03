@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $fillable = [
-        'nama','email','discord','no_hp'
+        'nama','email','discord','no_hp','logo'
     ];
 
     protected $hidden = [

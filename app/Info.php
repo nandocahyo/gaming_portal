@@ -8,7 +8,7 @@ class Info extends Model
 {
     protected $fillable = [
         'id_tournament','discord','price',
-        'rules'
+        'rules','banner'
     ];
 
     protected $hidden = [

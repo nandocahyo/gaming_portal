@@ -20,6 +20,7 @@ class CreateInfosTable extends Migration
             $table->string('discord');
             $table->integer('price');
             $table->string('rules');
+            $table->string('banner');
             $table->timestamps();
         });
     }

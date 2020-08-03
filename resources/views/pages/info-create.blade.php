@@ -38,6 +38,12 @@
                         <input type="text" class="form-control" name="rules" placeholder="Rules" value="{{ old('rules') }}">
                     </div>
 
+                    <div class="form-group">
+                        <label for="title">Banner</label>
+                        <br>
+                        <input type="file" name="banner" placeholder="Banner" value="{{ old('banner') }}">
+                    </div>
+
                     <button type="submit" class="btn btn-primary btn-block">
                         Simpan
                     </button>

@@ -19,6 +19,7 @@ class CreateTeamsTable extends Migration
             $table->string('email')->unique();
             $table->string('discord');
             $table->string('no_hp');
+            $table->string('logo');
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@
                       <th>Discord</th>
                       <th>Price</th>
                       <th>Rules</th>
+                      <th>Banner</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -27,11 +28,15 @@
                   <tbody id="posts-crud">
                     @foreach($items as $item)
                     <tr>
-                      <td>{{ $item->id }}</td>
+                      <td>{{  $loop->iteration }}</td>
                       <td>{{ $item->tournaments->nama }}</td>
                       <td>{{ $item->discord }}</td>
                       <td>{{ $item->price }}</td>
                       <td>{{ $item->rules }}</td>
+                      <td>
+                      <img src="{{ URL::to('/') }}/gambar-banner/{{ $item->banner }}" alt="" style="width: 100px" 
+                            class="img-thumbnail" />
+                      </td>
                       <td>
                             <a href="{{ route('info.edit', $item->id) }}" class="btn btn-info">
                                 <i class="fa fa-pencil-alt"></i>

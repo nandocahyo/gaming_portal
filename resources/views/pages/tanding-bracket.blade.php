@@ -9,10 +9,8 @@
       <div class="matchups">
         <div class="matchup">
           <div class="participants">
-          @foreach($items as $item)
-            <div class="participant winner"><span>{{$item->team->nama }}</span></div>
-            <div class="participant"><span>{{$item->team->nama}}</span></div>
-        @endforeach
+            <div class="participant winner"><span>hhf</span></div>
+            <div class="participant"><span>rgthth</span></div>
           </div>
         </div>
         <div class="matchup">

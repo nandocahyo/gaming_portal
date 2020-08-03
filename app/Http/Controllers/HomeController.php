@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tanding;
+use App\Tournament;
+use App\Team;
+use App\Info;
 
 class HomeController extends Controller
 {
@@ -15,6 +19,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        return view('pages.home',[
+            'tanding'       => Tanding::first(),
+            'semifinal'     => Tanding::with(['team'])->where('score','2')->where('status','FINISH')->first(),
+            'final'         => Tanding::with(['team'])->where('score','3')->where('status','FINISH')->where('status','FINISH')->first(),
+            'tournament'    => Tournament::with(['tournament_category'])->get(),
+            'team'          => Team::all(),
+            'info'          => Info::all()
+        ]);
+    }
+
+    public function match()
+    {
+        return view('pages.match');
     }
 }

@@ -20,8 +20,7 @@
                       <th>Email</th>
                       <th>Discord</th>
                       <th>No HP</th>
-                      <th>Player 1</th>
-                      <th>Level 1</th>
+                      <th>Logo</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -34,8 +33,10 @@
                       <td>{{ $item->teams->email }}</td>
                       <td>{{ $item->teams->discord }}</td>
                       <td>{{ $item->teams->no_hp }}</td>
-                      <td>{{ $item->player1 }}</td>
-                      <td>{{ $item->level1 }}</td>
+                      <td>
+                      <img src="{{ URL::to('/') }}/gambar-team/{{ $item->teams->logo }}" alt="" style="width: 100px" 
+                            class="img-thumbnail" />
+                      </td>
                       <td>
                             <a href="{{ route('team.edit', $item->id) }}" class="btn btn-info">
                                 <i class="fa fa-pencil-alt"></i>
