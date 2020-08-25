@@ -39,9 +39,22 @@
 	          <li class="nav-item {{ Request::path() === '/' ? 'active' : ''}}"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
 	          <li class="nav-item {{ Request::path() === '/match' ? 'active' : ''}}"><a href="{{ route('match') }}" class="nav-link">Games</a></li>
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item cta"><a href="#" class="nav-link">Join Battle</a></li>
+	          <li class="nav-item cta"><a href="{{ route('join') }}" class="nav-link">Join Battle</a></li>
+			  &nbsp &nbsp
+			  @guest
+			  <li class="nav-item"><a href="{{ url('login')}}" class="nav-link" style="color: white;">Login</a></li>
+	          @endguest
+			  @auth
+			  <form class="form-group" action="{{ url('logout') }}" method="POST">
+                @csrf
+				<button class="btn btn-danger mt-3" type="submit">
+                Keluar
+                </button>
+			  </form>
+			 
+			  @endauth
 
-	        </ul>
+			</ul>
 	      </div>
 	    </div>
 	  </nav>
@@ -129,13 +142,13 @@
 		          	<div class="sport-team d-flex align-items-center">
 	          			<div class="img logo" style="background-image: url(frontend/images/team-3.jpg);"></div>
 									<div class="text-center px-1 px-md-3 desc">
-									@if($tanding->score == '0')
+									@if($tanding->score == '0' && $tanding->status == 'RUNNING')
 										<h4 class="score lost"><span>LOSE</span></h4>
 									@elseif($semifinal->score =='2') 
 										<h4 class="score lost"><span>LOSE</span></h4>
 									@endif
 
-									@if($tanding->score == '0')
+									@if($tanding->score == '0' && $tanding->status == 'RUNNING')
 										<h4 class="team-name">Bang Loser</h4>
 									@else
 										<h4 class="team-name">{{$semifinal->team->nama}}</h4>

@@ -21,8 +21,8 @@ class HomeController extends Controller
     {
         return view('pages.home',[
             'tanding'       => Tanding::first(),
-            'semifinal'     => Tanding::with(['team'])->where('score','2')->where('status','FINISH')->first(),
-            'final'         => Tanding::with(['team'])->where('score','3')->where('status','FINISH')->where('status','FINISH')->first(),
+            'semifinal'     => Tanding::with(['team'])->where('score','2')->where('status','RUNNING')->first(),
+            'final'         => Tanding::with(['team'])->where('score','3')->where('status','RUNNING')->first(),
             'tournament'    => Tournament::with(['tournament_category'])->get(),
             'team'          => Team::all(),
             'info'          => Info::all()

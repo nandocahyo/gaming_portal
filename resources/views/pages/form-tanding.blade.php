@@ -64,58 +64,76 @@
 		<section class="ftco-section">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-12">
-	          <div class="heading-section ftco-animate">
-	            <h2 class="mb-4">Bracket Pertandingan</h2>
-	          </div>
-	         
-	          <!-- bracket section -->
-            <div class="tournament-container">
-              <div class="tournament-headers">
-                <h3>Round of 8</h3>
-                <h3>Quarter-Finals</h3>
-                <h3>Semi-Finals</h3>
-                <h3>Final</h3>
-                <h3>Winner</h3>
-              </div>
 
-              <div class="tournament-brackets">
-                <ul class="bracket bracket-1">
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                </ul>  
-                <ul class="bracket bracket-2">
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                </ul>  
-                <ul class="bracket bracket-3">
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                </ul>  
-                <ul class="bracket bracket-4">
-                  <li class="team-item" style="color: white;">Baga</li>
-                </ul>  
+                <div class="col-md-6">
+                <form action="{{ route('register_team') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <strong><h4>Nama Team</h4></strong>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="nama" placeholder="Nama">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="discord" placeholder="Discord">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="no_hp" placeholder="No. HP">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Logo Team</label>
+                        <input type="file" name="logo" class="form-control">
+                    </div>
+                
+                </div>
 
-                <ul class="bracket bracket-5">
-                  <li class="team-item" style="color: white;">Paladin Champions</li>
-                </ul>  
-              </div>
-            </div>
+                <div class="col-md-3">
+                    <br><br>
+                    <strong><h4>Nama Player</h4></strong>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="player1" placeholder="Player 1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="player2" placeholder="Player 2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="player3" placeholder="Player 3">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="player4" placeholder="Player 4">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="player5" placeholder="Player 5">
+                    </div>
+                </div>
 
-           
-					
-              <!-- end bracket section -->
-	        
-	          
-	        </div>
+                <div class="col-md-3">
+                    <br><br>
+                    <strong><h4>Player Level</h4></strong>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="level1" placeholder="Level 1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="level2" placeholder="Level 2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="level3" placeholder="Level 3">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="level4" placeholder="Level 4">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="level5" placeholder="Level 5">
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Register Team
+                    </button>
+                   
+                    </form>
+                </div>
+
 					</div>
 				</div>
 			</div>

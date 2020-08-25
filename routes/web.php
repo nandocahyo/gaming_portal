@@ -38,3 +38,5 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/match', 'HomeController@match')->name('match');
+Route::get('/join','JoinController@join')->name('join')->middleware(['auth']);
+Route::post('/register-team','JoinController@register_team')->name('register_team')->middleware(['auth']);
