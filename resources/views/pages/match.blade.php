@@ -81,27 +81,43 @@
 
               <div class="tournament-brackets">
                 <ul class="bracket bracket-1">
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
+                  @forelse($round as $item)
+                  <li class="team-item" style="color: white;">{{$item->team->nama}}</li>
+                  @empty
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  @endforelse
                 </ul>  
                 <ul class="bracket bracket-2">
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
+                  @forelse($quarter as $q)
+                  <li class="team-item" style="color: white;">{{$q->team->nama}}</li>
+                  @empty
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  @endforelse
                 </ul>  
                 <ul class="bracket bracket-3">
-                  <li class="team-item" style="color: white;">Baga</li>
-                  <li class="team-item" style="color: white;">Baga</li>
+                  @forelse($final as $f)
+                  <li class="team-item" style="color: white;">{{$f->team->nama}}</li>
+                  @empty
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  @endforelse
                 </ul>  
                 <ul class="bracket bracket-4">
-                  <li class="team-item" style="color: white;">Baga</li>
+                  @forelse($winner as $w)
+                  <li class="team-item" style="color: white;">{{$w->team->nama}}</li>
+                  @empty
+                  <li class="team-item" style="color: white;">Paladin</li>
+                  @endforelse
                 </ul>  
 
                 <ul class="bracket bracket-5">

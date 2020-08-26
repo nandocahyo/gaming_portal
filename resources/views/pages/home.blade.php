@@ -135,8 +135,10 @@
 	          <div class="scoreboard mb-5 mb-lg-0">
 			  @if($tanding->score == '0') 
 	          	<div class="divider text-center"><span>{{ \Carbon\Carbon::parse($tanding->updated_at)->format('d M Y')}}</span></div>
+				 @elseif($semifinal)
+				 <div class="divider text-center"><span>{{ \Carbon\Carbon::parse($semifinal->updated_at)->format('d M Y')}}</span></div>
 				  @else
-				  <div class="divider text-center"><span>{{ \Carbon\Carbon::parse($semifinal->updated_at)->format('d M Y')}}</span></div>
+				  <div class="divider text-center"><span>{{ \Carbon\Carbon::parse($semifinal2->updated_at)->format('d M Y')}}</span></div>
 				  @endif
 				  <div class="d-sm-flex mb-4">
 		          	<div class="sport-team d-flex align-items-center">
@@ -144,14 +146,18 @@
 									<div class="text-center px-1 px-md-3 desc">
 									@if($tanding->score == '0' && $tanding->status == 'RUNNING')
 										<h4 class="score lost"><span>LOSE</span></h4>
-									@elseif($semifinal->score =='2') 
+									@elseif($semifinal) 
+										<h4 class="score lost"><span>LOSE</span></h4>
+									@elseif($semifinal2)
 										<h4 class="score lost"><span>LOSE</span></h4>
 									@endif
 
 									@if($tanding->score == '0' && $tanding->status == 'RUNNING')
 										<h4 class="team-name">Bang Loser</h4>
-									@else
+									@elseif($semifinal)
 										<h4 class="team-name">{{$semifinal->team->nama}}</h4>
+									@else
+										<h4 class="team-name">{{$semifinal2->team->nama}}</h4>
 									@endif
 									</div>
 		          	</div>
@@ -160,14 +166,18 @@
 									<div class="text-center px-1 px-md-3 desc">
 									@if($tanding->score == '0')
 										<h3 class="score win"><span>WIN</span></h3>
-									@elseif($final->score =='3') 
+									@elseif($final) 
+										<h3 class="score win"><span>WIN</span></h3>
+									@elseif($final2)
 										<h3 class="score win"><span>WIN</span></h3>
 									@endif
 
 									@if($tanding->score == '0')
 										<h4 class="team-name">Bang Jago</h4>
-									@else
+									@elseif($final)
 										<h4 class="team-name">{{$final->team->nama}}</h4>
+									@elseif($final2)
+										<h4 class="team-name">{{$final2->team->nama}}</h4>
 									@endif
 									</div>
 		          	</div>
